@@ -56,7 +56,6 @@
             <strong>Time: </strong>
                 <input type="text" name="sender" class="form-control" value="{{ $requests->created_at}}">
             </div>
-           
             </div>
             
             <div class="pull-left">

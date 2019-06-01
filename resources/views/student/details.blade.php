@@ -14,7 +14,7 @@
       </ol>
     </section>
 
-    <!-- Main content -->
+    <!--- Main content -->
     <section class="content">
       <!-- Default box -->
       <div class="box">

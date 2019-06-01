@@ -64,7 +64,6 @@
                 </table>
                  {!! $requests->links() !!}
               <!--/tbl-->
-
         </div>
         <!-- /.box-body -->
         <div class="box-footer">

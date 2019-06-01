@@ -172,5 +172,4 @@
       <!-- /.box -->
       </section>
     <!-- /.content -->
-
 @endsection

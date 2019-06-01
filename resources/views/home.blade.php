@@ -64,7 +64,7 @@
         <div class="box-footer">
           Summarized Reports
         </div>
-        <!-- /.box-footer-->
+        <!-- /.box-footer--->
         </div>
       <!-- /.box -->    
       </section>

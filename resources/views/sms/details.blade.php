@@ -63,7 +63,6 @@
             <p>&nbsp; </p>
                 <a class="btn btn-sm btn-danger" href="{{ route('sms.index')}}">Close</a>
             </div>
-            
            
         </div>
         <!-- /.box-body -->
