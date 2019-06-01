@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2019 at 08:13 AM
+-- Generation Time: Jun 01, 2019 at 12:00 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -47,7 +47,9 @@ INSERT INTO `examresults` (`id`, `courseCode`, `courseTitle`, `marks`, `regNo`, 
 (1, 'BIT 421', 'INFORMATION MANAGEMENT', 80.00, 'BIT/0037/15', 1, '2019-05-22 09:13:37', NULL),
 (2, 'BIT 422', 'IT ENTREPRENEURSHIP', 70.00, 'BIT/0037/15', 1, '2019-05-22 09:13:37', NULL),
 (3, 'BIT 421', 'INFORMATION MANAGEMENT', 90.00, 'BIT/0039/15', 1, '2019-05-22 09:14:48', NULL),
-(4, 'BIT 422', 'IT ENTREPRENEURSHIP', 86.00, 'BIT/0039/15', 1, '2019-05-22 09:14:48', NULL);
+(4, 'BIT 422', 'IT ENTREPRENEURSHIP', 86.00, 'BIT/0039/15', 1, '2019-05-22 09:14:48', NULL),
+(5, 'BIT 421', 'INFORMATION MANAGEMENT', 99.00, 'BIT/0039/12', 1, '2019-05-31 08:46:10', '2019-05-31 08:46:10'),
+(6, 'BIT 422', 'IT ENTREPRENEURSHIP', 70.00, 'BIT/0029/15', 1, '2019-05-31 08:46:10', '2019-05-31 08:46:10');
 
 -- --------------------------------------------------------
 
@@ -119,7 +121,25 @@ CREATE TABLE `messagein` (
 --
 
 INSERT INTO `messagein` (`Id`, `SendTime`, `ReceiveTime`, `MessageFrom`, `MessageTo`, `SMSC`, `MessageText`, `MessageType`, `MessageParts`, `MessagePDU`, `Gateway`, `UserId`) VALUES
-(1, NULL, NULL, '+254716235834', NULL, NULL, 'RESULTS', NULL, NULL, NULL, NULL, NULL);
+(1, NULL, NULL, '+254716235834', NULL, NULL, 'RESULTS', NULL, NULL, NULL, NULL, NULL),
+(2, '2019-04-24 18:22:48', NULL, 'Safaricom', '', NULL, 'Recharge of 50.00 KSH by Mpesa account 254715535522 was successful. Balance:50.05 KSH,expiry date:2019-07-23.Tariff: Blaze.Dial *460*0#.', NULL, NULL, NULL, NULL, NULL),
+(3, '2019-04-24 18:22:51', NULL, 'KochoKocho', '', NULL, '6 days left,what are you waiting for? Top up or use M-PESA there is 1M per COUNTY to be won. Entries awarded 20. Total entries 169. Dial *456*0*4# to STOP', NULL, NULL, NULL, NULL, NULL),
+(4, '2019-04-24 18:29:41', NULL, 'Safaricom', '', NULL, 'Congratulations! You have received 25.00 KSH STORO Bonus Airtime expiry midnight. You can use your bonus to Call and SMS.', NULL, NULL, NULL, NULL, NULL),
+(5, '2019-04-24 19:05:40', NULL, 'SAFARICOM', '', NULL, 'Congratulations!  You  have  received  200%  bonus  airtime    +  100  Minutes  valid  24hrs  for  topping  up.  Send  BAL  to  144  to  check  balance\r\n', NULL, NULL, NULL, NULL, NULL),
+(6, '2019-04-24 19:05:43', NULL, 'SAFARICOM', '', NULL, 'Congratulations!  You  have  received  200%  bonus  airtime    +  100  Minutes  valid  24hrs  for  topping  up.  Send  BAL  to  144  to  check  balance\r\n', NULL, NULL, NULL, NULL, NULL),
+(7, '2019-04-24 19:27:25', NULL, 'Safaricom', '', NULL, 'You have transferred 33.00 KSH from your account to 0708058225.New balance:5.43 KSH,expiry date is 23-07-2019.Hit your STORO target and Enjoy 200%bonus.Dial *460#', NULL, NULL, NULL, NULL, NULL),
+(8, '2019-04-24 19:44:26', NULL, '0790145892', '', NULL, 'You attempted to call me but I was not available. Please call me. Double Double your airtime! Dial *444*2# now!', NULL, NULL, NULL, NULL, NULL),
+(9, '2019-04-24 21:23:05', NULL, '0729552942', '', NULL, 'You attempted to call me but I was not available. Please call me. Double Double your airtime! Dial *444*2# now!', NULL, NULL, NULL, NULL, NULL),
+(10, '2019-04-25 11:57:22', NULL, '0710719387', '', NULL, 'You attempted to call me but I was not available. Please call me. Double Double your airtime! Dial *444*2# now!', NULL, NULL, NULL, NULL, NULL),
+(11, '2019-04-25 14:02:37', NULL, '+254715166292', '', NULL, 'Unasemaje?', NULL, NULL, NULL, NULL, NULL),
+(12, '2019-04-25 14:07:28', NULL, '+254715166292', '', NULL, 'Kwa nyumba but natoka kamvua kakiisha', NULL, NULL, NULL, NULL, NULL),
+(13, '2019-04-25 14:11:08', NULL, '+254715166292', '', NULL, 'Nmekuwa but nkapita kwa nyumba tym tulikuwa tunatembea  peace walk', NULL, NULL, NULL, NULL, NULL),
+(14, '2019-04-25 14:12:49', NULL, '+254715166292', '', NULL, 'Hatukusaign  anything', NULL, NULL, NULL, NULL, NULL),
+(15, '2019-04-25 14:13:11', NULL, '+254715166292', '', NULL, 'Azn hkukuwa na attendance sheet', NULL, NULL, NULL, NULL, NULL),
+(16, '2019-04-25 14:15:55', NULL, '+254715166292', '', NULL, 'Cjaona maybe supper after kupanga venues', NULL, NULL, NULL, NULL, NULL),
+(17, '2019-04-25 14:19:12', NULL, '+254715166292', '', NULL, 'Naconfirm.', NULL, NULL, NULL, NULL, NULL),
+(18, '2019-05-23 10:15:40', NULL, '+254708058225', '0702915621', NULL, 'Help', NULL, NULL, NULL, NULL, NULL),
+(19, '2019-04-24 17:46:11', NULL, 'MPESA', '', NULL, 'his message to 456.', NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Triggers `messagein`
@@ -180,7 +200,19 @@ INSERT INTO `messagelog` (`Id`, `SendTime`, `ReceiveTime`, `StatusCode`, `Status
 (14, '2019-05-22 20:39:20', NULL, 300, NULL, '+254724773475', NULL, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (15, '2019-05-22 20:39:50', NULL, 300, NULL, '+254712108244', NULL, 'Reasons for unavailability of exams can be    fee balances or pending specials. Your fee balance and special application are shown here:\n0KES fee balance.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (16, '2019-05-22 20:48:22', NULL, 300, NULL, '+254708058225', NULL, 'KIBU RESULTS For Ng\'etich\nBIT 421- 80.00,BIT 422- 70.00\nType HELP or call/SMS 0708058225.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, '2019-05-22 20:50:13', NULL, 300, NULL, '+254712108244', NULL, 'KIBU RESULTS For Ng\'etich\nBIT 421- 80.00,BIT 422- 70.00,BIT 421- 90.00,BIT 422- 86.00\nType HELP or call/SMS 0708058225.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(17, '2019-05-22 20:50:13', NULL, 300, NULL, '+254712108244', NULL, 'KIBU RESULTS For Ng\'etich\nBIT 421- 80.00,BIT 422- 70.00,BIT 421- 90.00,BIT 422- 86.00\nType HELP or call/SMS 0708058225.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(26, '2019-05-23 10:16:44', NULL, 300, NULL, '0710719387', NULL, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, '2019-05-23 10:16:49', NULL, 300, NULL, '+254715166292', NULL, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, '2019-05-23 10:16:55', NULL, 300, NULL, '+254715166292', NULL, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, '2019-05-23 10:17:00', NULL, 300, NULL, '+254715166292', NULL, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, '2019-05-23 10:17:05', NULL, 300, NULL, '+254715166292', NULL, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, '2019-05-23 10:17:10', NULL, 300, NULL, '+254715166292', NULL, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, '2019-05-23 10:17:25', NULL, 300, NULL, '+254715166292', NULL, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(33, '2019-05-23 10:17:30', NULL, 300, NULL, '+254715166292', NULL, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, '2019-05-23 10:17:45', NULL, 300, NULL, '+254708058225', NULL, 'HELP CONTENT\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(35, '2019-05-23 11:16:03', NULL, 300, NULL, 'MPESA', NULL, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(36, '2019-05-31 17:58:18', NULL, 300, NULL, '+254708058225', NULL, 'KIBU RESULTS For Ng\'etich\nBIT 421- 80.00,BIT 422- 70.00\nType HELP or call/SMS 0708058225.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(37, '2019-05-31 18:00:55', NULL, 300, NULL, '+254716235834', NULL, 'Reasons for unavailability of exams can be    fee balances or pending specials. Your fee balance and special application are shown here:\n0KES fee balance.', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -269,6 +301,13 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('dekingetich@gmail.com', '$2y$10$jgKCKS1/KGryYrdhvhMFM.LVBcLd96tpcswllQREsR6lmtT4unVqq', '2019-06-01 05:38:20');
+
 -- --------------------------------------------------------
 
 --
@@ -304,7 +343,11 @@ INSERT INTO `requests` (`id`, `shortCode`, `sender`, `created_at`, `updated_at`)
 (17, 'FFF', '+254724773475', '2019-05-22 17:39:14', NULL),
 (18, 'REASON', '+254712108244', '2019-05-22 17:39:50', NULL),
 (19, 'RESULTS', '+254708058225', '2019-05-22 17:48:21', NULL),
-(21, 'RESULTS', '+254712108244', '2019-05-22 17:50:11', NULL);
+(21, 'RESULTS', '+254712108244', '2019-05-22 17:50:11', NULL),
+(38, 'Help', '+254708058225', NULL, NULL),
+(39, 'his message to 456.', 'MPESA', NULL, NULL),
+(40, 'RESULTS', '+254708058225', NULL, NULL),
+(42, 'REASON', '+254716235834', NULL, NULL);
 
 --
 -- Triggers `requests`
@@ -372,7 +415,27 @@ INSERT INTO `responses` (`id`, `message`, `recipient`, `requestId`, `created_at`
 (14, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', '+254724773475', 17, NULL, NULL),
 (15, 'Reasons for unavailability of exams can be    fee balances or pending specials. Your fee balance and special application are shown here:\n0KES fee balance.\n', '+254712108244', 18, NULL, NULL),
 (16, 'KIBU RESULTS For Ng\'etich\nBIT 421- 80.00,BIT 422- 70.00\nType HELP or call/SMS 0708058225.', '+254708058225', 19, NULL, NULL),
-(17, 'KIBU RESULTS For Ng\'etich\nBIT 421- 80.00,BIT 422- 70.00,BIT 421- 90.00,BIT 422- 86.00\nType HELP or call/SMS 0708058225.', '+254712108244', 21, NULL, NULL);
+(17, 'KIBU RESULTS For Ng\'etich\nBIT 421- 80.00,BIT 422- 70.00,BIT 421- 90.00,BIT 422- 86.00\nType HELP or call/SMS 0708058225.', '+254712108244', 21, NULL, NULL),
+(18, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', 'Safaricom', 22, NULL, NULL),
+(19, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', 'KochoKocho', 23, NULL, NULL),
+(20, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', 'Safaricom', 24, NULL, NULL),
+(21, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', 'SAFARICOM', 25, NULL, NULL),
+(22, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', 'SAFARICOM', 26, NULL, NULL),
+(23, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', 'Safaricom', 27, NULL, NULL),
+(24, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', '0790145892', 28, NULL, NULL),
+(25, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', '0729552942', 29, NULL, NULL),
+(26, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', '0710719387', 30, NULL, NULL),
+(27, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', '+254715166292', 31, NULL, NULL),
+(28, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', '+254715166292', 32, NULL, NULL),
+(29, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', '+254715166292', 33, NULL, NULL),
+(30, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', '+254715166292', 34, NULL, NULL),
+(31, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', '+254715166292', 35, NULL, NULL),
+(32, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', '+254715166292', 36, NULL, NULL),
+(33, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', '+254715166292', 37, NULL, NULL),
+(34, 'HELP CONTENT\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n    ', '+254708058225', 38, NULL, NULL),
+(35, 'INVALID QUERY.\r\n                              Type RESULTS, to view current results.\r\n                              Type REASON to know why you have no results.\r\n                              Type academic year(e.g 2018/2019) to view previous results.\r\n  ', 'MPESA', 39, NULL, NULL),
+(36, 'KIBU RESULTS For Ng\'etich\nBIT 421- 80.00,BIT 422- 70.00\nType HELP or call/SMS 0708058225.', '+254708058225', 40, NULL, NULL),
+(37, 'Reasons for unavailability of exams can be    fee balances or pending specials. Your fee balance and special application are shown here:\n0KES fee balance.\n', '+254716235834', 42, NULL, NULL);
 
 --
 -- Triggers `responses`
@@ -425,7 +488,11 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`id`, `regNo`, `idNo`, `phoneNo`, `email`, `surName`, `otherName`, `parentPhone`, `yos`, `created_at`, `updated_at`) VALUES
 (1, 'BIT/0037/15', 33664782, '+254708058225', 'dekingetich@gmail.com', 'Ng\'etich', 'Dennis', '+254712108244', 4, '2019-05-22 07:00:00', NULL),
-(2, 'BIT/0039/15', 34445678, '+254724773475', 'koechisaac62@gmail.com', 'Koech', 'Isaac', '+254716235834', 4, '2019-05-22 08:24:17', '0000-00-00 00:00:00');
+(2, 'BIT/0039/15', 34445678, '+254724773475', 'koechisaac62@gmail.com', 'Koech', 'Isaac', '+254716235834', 4, '2019-05-22 08:24:17', '0000-00-00 00:00:00'),
+(4, 'COM/0038/18', 34567890, '+254708899646', 'cketer@gmail.com', 'Kibet', 'Carlos', '+254716235834', 1, '2019-05-23 13:30:37', '2019-05-23 13:30:37'),
+(11, 'BIT/0030/15', 1098765, '+254704566779', 'sarabernar@gmail.com', 'Magdalene', 'Sarah', '+254716235834', 4, '2019-05-23 17:55:16', '2019-05-23 17:55:16'),
+(13, 'BIT/0029/15', 33456780, '+254700795553', 'alexuskemboi@gmail.com', 'Kemboi', 'Alex', '+254716235834', 4, '2019-05-31 05:41:58', '2019-05-31 05:41:58'),
+(18, 'BIT/0030/16', 876543, '+254702445551', 'kingetich@gmail.com', 'Kate', 'Sarah', '+254712108244', 3, '2019-06-01 06:10:17', '2019-06-01 06:10:17');
 
 -- --------------------------------------------------------
 
@@ -449,7 +516,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Kiprotich Ngetich', 'dekingetich@gmail.com', NULL, '$2y$10$SIvl4UfubTpIGGe09yCS2OmxjnNXJpDVRVmM0YDfqjbDCwtjnh/a6', NULL, '2019-05-22 07:34:41', '2019-05-22 07:34:41');
+(1, 'Kiprotich Ngetich', 'dekingetich@gmail.com', NULL, '$2y$10$SIvl4UfubTpIGGe09yCS2OmxjnNXJpDVRVmM0YDfqjbDCwtjnh/a6', 'yBLPq8RKVUPULaRYVNHRC48jyEdnKN5wLoEEU6yVb2dazcpqmG5rQsxQADUl', '2019-05-22 07:34:41', '2019-05-22 07:34:41'),
+(2, 'Ali Manzu', 'alimanzi@gmail.com', NULL, '$2y$10$KAEU2.vYQXJKCK.pQloNCuykTScz3EzGUilXtKoVFEqkmHBPrR8IO', NULL, '2019-05-24 10:41:35', '2019-05-24 10:42:04'),
+(3, 'Alex', 'alexkemboi44@gmail.com', NULL, '$2y$10$DiZ0ljRDmWsH0nUdYCPyZ.uTlKxNOa05dQPDf8wfMq8Kg5uQ5T/um', NULL, '2019-05-24 14:33:25', '2019-05-24 14:33:25');
 
 --
 -- Indexes for dumped tables
@@ -460,7 +529,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 ALTER TABLE `examresults`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `examresults_id_unique` (`id`);
+  ADD UNIQUE KEY `examresults_id_unique` (`id`),
+  ADD KEY `regNo` (`regNo`);
 
 --
 -- Indexes for table `exams`
@@ -474,7 +544,8 @@ ALTER TABLE `exams`
 --
 ALTER TABLE `fees`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `fees_id_unique` (`id`);
+  ADD UNIQUE KEY `fees_id_unique` (`id`),
+  ADD KEY `studfeekey` (`regNo`);
 
 --
 -- Indexes for table `messagein`
@@ -536,7 +607,8 @@ ALTER TABLE `responses`
 --
 ALTER TABLE `specials`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `specials_id_unique` (`id`);
+  ADD UNIQUE KEY `specials_id_unique` (`id`),
+  ADD KEY `specialstudkey` (`regNo`);
 
 --
 -- Indexes for table `students`
@@ -546,7 +618,8 @@ ALTER TABLE `students`
   ADD UNIQUE KEY `students_id_unique` (`id`),
   ADD UNIQUE KEY `students_regno_unique` (`regNo`),
   ADD UNIQUE KEY `students_phoneno_unique` (`phoneNo`),
-  ADD UNIQUE KEY `students_email_unique` (`email`);
+  ADD UNIQUE KEY `students_email_unique` (`email`),
+  ADD KEY `parentkey` (`parentPhone`);
 
 --
 -- Indexes for table `users`
@@ -563,7 +636,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `examresults`
 --
 ALTER TABLE `examresults`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `exams`
@@ -581,13 +654,13 @@ ALTER TABLE `fees`
 -- AUTO_INCREMENT for table `messagein`
 --
 ALTER TABLE `messagein`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `messagelog`
 --
 ALTER TABLE `messagelog`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `messageout`
@@ -611,13 +684,13 @@ ALTER TABLE `parents`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `responses`
 --
 ALTER TABLE `responses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `specials`
@@ -629,13 +702,35 @@ ALTER TABLE `specials`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `fees`
+--
+ALTER TABLE `fees`
+  ADD CONSTRAINT `studfeekey` FOREIGN KEY (`regNo`) REFERENCES `students` (`regNo`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `specials`
+--
+ALTER TABLE `specials`
+  ADD CONSTRAINT `specialstudkey` FOREIGN KEY (`regNo`) REFERENCES `students` (`regNo`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `students`
+--
+ALTER TABLE `students`
+  ADD CONSTRAINT `parentkey` FOREIGN KEY (`parentPhone`) REFERENCES `parents` (`phoneNo`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

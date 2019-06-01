@@ -35,7 +35,22 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 </head>
-<body class="hold-transition skin-purple sidebar-mini fixed">
+<style>
+    .example-modal .modal {
+      position: relative;
+      top: auto;
+      bottom: auto;
+      right: auto;
+      left: auto;
+      display: block;
+      z-index: 1;
+    }
+
+    .example-modal .modal {
+      background: transparent !important;
+    }
+  </style>
+<body class="hold-transition skin-purple-light sidebar-collapse sidebar-mini fixed">
 <!-- Site wrapper -->
 <div id="app">
 <div class="wrapper">
@@ -128,13 +143,13 @@
         <li class="header">MENU</li>
         <li><a href="{{ route('home')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li class="divider"></li>
-        <li><a href="#"><i class="fa fa-users"></i> <span>Add Student</span></a></li>
+        <li><a href="{{ route('student.index') }}"><i class="fa fa-users"></i> <span>View Student</span></a></li>
         <li class="divider"></li>
-        <li><a href="#"><i class="fa fa-user-plus"></i> <span>Add User</span></a></li>
+        <li><a href="{{ route('user.index') }}"><i class="fa fa-user"></i> <span>View User</span></a></li>
         <li class="divider"></li>
-        <li><a href="{{ route('smsreports')}}"><i class="fa fa-fw fa-comments"></i> <span>SMS Reports</span></a></li>
+        <li><a href="{{ route('sms.index')}}"><i class="fa fa-fw fa-comments"></i> <span>SMS Reports</span></a></li>
         <li class="divider"></li>
-        <li><a href="#"><i class="fa fa-question-circle"></i> <span>Help</span></a></li>
+        <li><a href="#" data-toggle="modal" data-target="#modal-default"><i class="fa fa-question-circle"></i> <span>Help</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -152,7 +167,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2019 <a href="denniskiprotich0@gmail.com">SBRCS</a>.</strong> All rights
+    <strong>Copyright &copy; 2019 <a href="mailto:denniskiprotich0@gmail.com">SBRCS</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -348,6 +363,27 @@
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
+  <div class="modal fade" id="modal-default">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Help Content</h4>
+              </div>
+              <div class="modal-body">
+                <embed src="{{ asset('dist/help.pdf')}}" width="100%" height="500">
+              </div>
+              <div class="modal-footer">
+                 
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
 </div>
 <!-- ./wrapper -->
 </div>
@@ -374,6 +410,19 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+  })
+</script>
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
   })
 </script>
 <!-- Page script -->

@@ -23,4 +23,5 @@ class student extends Model
         return $this->hasMany(examresult::class);
 
     }
+    protected $fillable = ['regNo', 'idNo', 'phoneNo', 'email', 'surName', 'otherName', 'parentPhone', 'yos'];
 }
