@@ -13,6 +13,10 @@ class studentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         //fetch stud
@@ -44,26 +48,29 @@ class studentController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'regNo' => 'required',
-            'idNo' => 'required', 
-            'phoneNo' => 'required',
-            'email' => 'required',
+        if(isset($_POST['form1'])){
+        request()->validate([
+            'regNo' => 'required|unique:students,regNo',
+            'idNo' => 'required|max:10|unique:students,idNo', 
+            'phoneNo' => 'required|max:14|unique:students,phoneNo',
+            'email' => 'required|unique:students,email',
             'surName' => 'required',
             'otherName' => 'required',
             'parentPhone' => 'required',
             'yos' => 'required'
-        ]);
+        ]); 
             student::create($request->all());
             return redirect()->route('student.index')
         ->with("success","New student Added Successfully!");
-          //parent
+        }
+        else if(isset($_POST['form2'])){
+         //parent
          $request->validate([
             'surName1' => 'required',
-            'idNo1' => 'required',
+            'idNo1' => 'required|max:10|unique:parents,idNo',
             'otherName1' => 'required',
-            'phoneNo1' => 'required',
-            'email1' => 'required'
+            'phoneNo1' => 'required|max:14|unique:parents,phoneNo',
+            'email1' => 'required|unique:parents,email'
         ]);
         $parents = new parents();
         $parents->surName = $request->get('surName1');
@@ -72,9 +79,8 @@ class studentController extends Controller
          $parents->phoneNo = $request->get('phoneNo1');
          $parents->email = $request->get('email1');
             $parents->save();
-            return redirect()->route('student.create')
-        ->with("success","Parent Added Successfully!");
-
+            return redirect()->rout()->with("success","Parent Added Successfully!");
+         }
        
     }
     public function addParent(Request $request)
@@ -130,8 +136,8 @@ class studentController extends Controller
         //
         $request->validate([
             'regNo' => 'required',
-            'idNo' => 'required', 
-            'phoneNo' => 'required',
+            'idNo' => 'required|max:10', 
+            'phoneNo' => 'required|max:14',
             'email' => 'required',
             'surName' => 'required',
             'otherName' => 'required',

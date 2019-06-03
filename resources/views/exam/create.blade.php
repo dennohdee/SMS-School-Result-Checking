@@ -4,13 +4,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Create New user
+        Add Exam Results
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="{{ route('user.index')}}"><i class="fa fa-dashboard"></i>View User</a></li>
-        <li class="active">Add User</li>
+        <li><a href="{{ route('exam.index')}}"><i class="fa fa-dashboard"></i>View Exams</a></li>
+        <li class="active">Add Exams</li>
       </ol>
     </section>
 
@@ -41,34 +41,38 @@
                     </div>
                     
                 @endif
-       <form action="{{ route('user.store')}}" method="post">
+       <form action="{{ route('exam.store')}}" method="post">
        @csrf
         <div class="row">
-            <div class="col-md-6">
-            <strong>Name </strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+        <div class="col-md-6">
+            <strong>Reg No.</strong>
+                <input type="text" name="regNo" class="form-control" placeholder="Reg No.">
             </div>
             
             <div class="col-md-6">
-            <strong>Email Address</strong>
-                <input type="email" name="email" class="form-control" placeholder="Email Address">
+            <strong>Course Code</strong>
+                <input type="text" name="courseCode" class="form-control" placeholder="Course Code">
             </div>
             <div class="col-md-6">
-            <strong>Password </strong>
-                <input type="password" name="password" class="form-control" placeholder="Password">
+            <strong>Course Title </strong>
+                <input name="courseTitle" type="text" class="form-control" placeholder="Course Title">
             </div>
             <div class="col-md-6">
-            <strong>Password </strong>
-                <input type="password" name="cpassword" class="form-control" placeholder="Confirm Password">
+            <strong>Marks </strong>
+                <input name="marks" type="text" class="form-control" placeholder="Marks">
+            </div>
+            <div class="col-md-6">
+            <strong>Academic Year </strong>
+                <input name="acYear" type="text" class="form-control" placeholder="Academic Year">
             </div>
             </div>
             <div class="pull-left">
             <p>&nbsp; </p>
-                <a class="btn btn-sm btn-danger" href="{{ route('user.index')}}">Close</a>
+                <a class="btn btn-sm btn-danger" href="{{ route('exam.index')}}">Close</a>
             </div>
             <div class="pull-right">
             <p>&nbsp; </p>
-                <button type="submit" onclick="return confirm('Add User?')" class="btn btn-sm btn-primary">Save</button>
+                <button type="submit" onclick="return confirm('Add exam results?')" class="btn btn-sm btn-primary">Save</button>
             </div>
         
         </form>

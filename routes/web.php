@@ -21,4 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('student', 'studentController');
 Route::resource('user', 'userController');
 Route::resource('sms', 'smsController');
-Route::get('/smsreports', 'smsreportsController@smsreports')->name('smsreports');
+Route::resource('exam', 'examController');
+Route::get('/help', 'smsreportsController@help')->name('help');
+Route::get('/profile', 'profileController@profile')->name('profile');
+Route::put('/profile', 'profileController@update');
+

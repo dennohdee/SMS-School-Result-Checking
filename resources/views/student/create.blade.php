@@ -39,7 +39,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                            <strong>Error! </strong>There were some errors with inputs. 
                          <ul>
-                        @foreach($errors as $error)
+                        @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul> 
@@ -49,9 +49,16 @@
        <form action="{{ route('student.store')}}" method="post">
        @csrf
         <div class="row">
+                    <div class="col-md-6">
+            <strong>Parent New here? Add Parent.</strong>
+            <button type="button" class="form-control btn btn-sm btn-info" data-toggle="modal" data-target="#modal-default">
+                <i class="fa fa-plus"></i> Add New Parent
+              </button>
+            </div>
+            
             <div class="col-md-6">
             <strong>Reg No. </strong>
-                <input type="text" name="regNo" class="form-control" placeholder="Reg No.">
+                <input type="text" name="regNo" class="form-control @error('regNo') already exists @enderror" placeholder="Reg No.">
             </div>
             
             <div class="col-md-6">
@@ -79,6 +86,7 @@
             <div class="col-md-6">
             <strong>Parent</strong>
             <select name="parentPhone" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <option value="">-Select Parent(ID No. - SurName)-</option> 
                   @foreach($parents as $parent)
                            <option value="{{ $parent->phoneNo }}">{{ $parent->idNo }} - {{ $parent->surName }} </option>    
                              @endforeach
@@ -88,12 +96,6 @@
             <strong>Year of Study</strong>
                 <input type="number" name="yos" class="form-control" placeholder="Year of Study">
             </div>
-            <div class="col-md-6">
-            <strong>Parent Not there? Add new.</strong>
-            <button type="button" class="form-control btn btn-sm btn-info" data-toggle="modal" data-target="#modal-default">
-                <i class="fa fa-plus"></i> Add New Parent
-              </button>
-            </div>
 
             </div>
             <div class="pull-left">
@@ -102,7 +104,7 @@
             </div>
             <div class="pull-right">
             <p>&nbsp; </p>
-                <button type="submit" onclick="return confirm('Add Student?')" class="btn btn-sm btn-primary">Save</button>
+                <button type="submit"  name="form1" onclick="return confirm('Add Student?')" class="btn btn-sm btn-primary">Save</button>
             </div>
         
         </form>  
@@ -115,28 +117,28 @@
                 <h4 class="modal-title">Add Parent</h4>
               </div>
               <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{ route('student.store')}}" method="post">
                 @csrf
         <div class="row">
             <div class="col-md-6">
             <strong>Sur Name </strong>
-                <input type="text" name="surName1" class="form-control" placeholder="Sur Name">
+                <input type="text" name="surName1" value="{{ old('surName1') }}" class="form-control" placeholder="Sur Name">
             </div>
             <div class="col-md-6">
             <strong>ID No. </strong>
-                <input type="number" name="idNo1" class="form-control" placeholder="ID No.">
+                <input type="number" name="idNo1" value="{{ old('idNo1') }}" class="form-control" placeholder="ID No.">
             </div>
             <div class="col-md-6">
             <strong>Other Name </strong>
-                <input type="text" name="otherName1" class="form-control" placeholder="Other Name">
+                <input type="text" name="otherName1" value="{{ old('otherName1') }}" class="form-control" placeholder="Other Name">
             </div>
             <div class="col-md-6">
             <strong>Phone No. </strong>
-                <input type="text" name="phoneNo1" class="form-control" placeholder="Phone No.">
+                <input type="text" name="phoneNo1" value="{{ old('phoneNo1') }}" class="form-control" placeholder="Phone No.">
             </div>
             <div class="col-md-6">
             <strong>Email </strong>
-                <input type="email" name="email1" class="form-control" placeholder="Email">
+                <input type="email" name="email1" value="{{ old('email1') }}" class="form-control" placeholder="Email">
             </div>
             
             </div>
@@ -146,7 +148,7 @@
             </div>
             <div class="pull-right">
             <p>&nbsp; </p>
-                <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                <button type="submit" name="form2" class="btn btn-sm btn-primary">Save</button>
             </div>
         
         </form>

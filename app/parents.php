@@ -11,4 +11,5 @@ class parents extends Model
         return $this->hasMany(student::class);
 
     }
+    protected $fillable = ['idNo', 'phoneNo', 'email', 'surName', 'otherName'];
 }

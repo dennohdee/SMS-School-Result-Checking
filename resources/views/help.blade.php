@@ -4,12 +4,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        SMS Reports
-        <small></small>
+       Help Content
+        <small>User Support</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">SMS Reports</li>
+        <li class="active">Help</li>
       </ol>
     </section>
 
@@ -18,7 +18,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">SMS</h3>
+          <h3 class="box-title"><i class="fa fa-question-circle"></i></h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -33,11 +33,11 @@
                         </div>
                     @endif
 
-                   
+                   <embed src="{{ asset('dist/help.pdf')}}" width="100%" height="500">
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          Footer
+          
         </div>
         <!-- /.box-footer-->
       </div>

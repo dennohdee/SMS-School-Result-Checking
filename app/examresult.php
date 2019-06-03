@@ -11,4 +11,5 @@ class examresult extends Model
         return $this->belongsTo('App\student');
 
     }
+    protected $fillable = ['courseCode', 'courseTitle', 'marks', 'regNo','examId'];
 }

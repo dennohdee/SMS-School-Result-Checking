@@ -94,7 +94,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{ route('profile') }}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
@@ -144,11 +144,13 @@
         <li class="divider"></li>
         <li><a href="{{ route('student.index') }}"><i class="fa fa-users"></i> <span>View Student</span></a></li>
         <li class="divider"></li>
+        <li><a href="{{ route('exam.index') }}"><i class="fa fa-users"></i> <span>View Exam</span></a></li>
+        <li class="divider"></li>
         <li><a href="{{ route('user.index') }}"><i class="fa fa-user"></i> <span>View User</span></a></li>
         <li class="divider"></li>
         <li><a href="{{ route('sms.index')}}"><i class="fa fa-fw fa-comments"></i> <span>SMS Reports</span></a></li>
         <li class="divider"></li>
-        <li><a href="#" data-toggle="modal" data-target="#modal-default"><i class="fa fa-question-circle"></i> <span>Help</span></a></li>
+        <li><a href="{{ route('help')}}"><i class="fa fa-question-circle"></i> <span>Help</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

@@ -34,7 +34,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                            <strong>Error! </strong>There were some errors with inputs. 
                          <ul>
-                        @foreach($errors as $error)
+                        @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul> 
@@ -113,23 +113,23 @@
         <div class="row">
             <div class="col-md-6">
             <strong>Sur Name </strong>
-                <input type="text" name="surName" class="form-control" placeholder="Sur Name">
+                <input type="text" name="surName1" class="form-control" placeholder="Sur Name">
             </div>
             <div class="col-md-6">
             <strong>ID No. </strong>
-                <input type="number" name="idNo" class="form-control" placeholder="ID No.">
+                <input type="number" name="idNo1" class="form-control" placeholder="ID No.">
             </div>
             <div class="col-md-6">
             <strong>Other Name </strong>
-                <input type="text" name="otherName" class="form-control" placeholder="Other Name">
+                <input type="text" name="otherName1" class="form-control" placeholder="Other Name">
             </div>
             <div class="col-md-6">
             <strong>Phone No. </strong>
-                <input type="text" name="phoneNo" class="form-control" placeholder="Phone No.">
+                <input type="text" name="phoneNo1" class="form-control" placeholder="Phone No.">
             </div>
             <div class="col-md-6">
             <strong>Email </strong>
-                <input type="email" name="email" class="form-control" placeholder="Email">
+                <input type="email" name="email1" class="form-control" placeholder="Email">
             </div>
             
             </div>

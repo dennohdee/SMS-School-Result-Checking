@@ -3,27 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Foundation\Auth\RegistersUsers;
-class userController extends Controller
+use App\examresult;
+
+class examController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function index()
     {
-        //view
-         $users = User::latest()->paginate(5);
-        return view('user.index', compact('users'))
+        //
+        $exams = examresult::latest()->paginate(5);
+        return view('exam.index', compact('exams'))
                 ->with('i',(request()->input('page',1)-1)*5);
-
     }
 
     /**
@@ -34,7 +28,7 @@ class userController extends Controller
     public function create()
     {
         //
-        return view('user.create');
+        return view('exam.create');
     }
 
     /**
@@ -47,13 +41,15 @@ class userController extends Controller
     {
         //
         request()->validate([
-            'name' => 'required',
-            'email' => 'required|unique:users,email', 
-            'password' => 'required|min:8'
+            'regNo' => 'required',
+            'courseCode' => 'required',
+            'courseTitle' => 'required',
+            'marks' => 'required',
+            'acYear' => 'required'
         ]);
-            User::create($request->all());
-            return redirect()->route('user.index')
-        ->with("success","New User Added Successfully!");
+        examresult::create($request->all());
+            return redirect()->route('exam.index')
+        ->with("success","Exam Results Added Successfully!");
     }
 
     /**
@@ -65,8 +61,8 @@ class userController extends Controller
     public function show($id)
     {
         //
-         $user = User::find($id);
-        return view('user.details', compact('user'));
+        $exams = examresult::find($id);
+        return view('exam.details', compact('exams'));
     }
 
     /**
@@ -78,8 +74,8 @@ class userController extends Controller
     public function edit($id)
     {
         //
-        $user = User::find($id);
-        return view('user.edit', compact('user'));
+        $exams = examresult::find($id);
+        return view('exam.edit', compact('exams'));
     }
 
     /**
@@ -92,18 +88,6 @@ class userController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
-        ]);
-            $user = User::find($id);
-            $user->name = $request->get('name');
-            $user->email = $request->get('email'); 
-            $user->password = Hash::make($request->get('password')); 
-            $user->save();
-            return redirect()->route('user.index')
-        ->with("success","User Updated Successfully!");
     }
 
     /**
@@ -115,9 +99,5 @@ class userController extends Controller
     public function destroy($id)
     {
         //
-        $user = User::find($id);
-         $user->delete();
-            return redirect()->route('user.index')
-        ->with("success","User Deleted Successfully!");
     }
 }

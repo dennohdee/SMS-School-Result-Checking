@@ -15,9 +15,9 @@ class smsreportsController extends Controller
     {
         $this->middleware('auth');
     }
-      public function smsreports()
+      public function help()
     {
-        return view('smsreports');
+        return view('help');
     }
     /**
      * Show the form for creating a new resource.
