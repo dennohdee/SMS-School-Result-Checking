@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Auth;
 
 class profileController extends Controller
@@ -22,10 +24,10 @@ class profileController extends Controller
     {
         //$id = Auth::user()->id;
         
-        $request->validate([
+        request()->validate([
             'name' => 'required',
             'email' => 'required', 
-            'password' => 'required|min:8'
+            'password' => 'required|min:8|confirmed'
         ]);
             $user = User::find(Auth::user()->id);
             $user->name = $request->get('name');

@@ -83,10 +83,10 @@
             </div>
             
             
-            <div class="col-md-6">
+            <div class="col-md-6 form-group">
             <strong>Parent</strong>
-            <select name="parentPhone" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                  <option value="">-Select Parent(ID No. - SurName)-</option> 
+            <select name="parentPhone" class="form-control select2" style="width: 100%;" style="border-radius:0px;">
+                  <option selected="selected">-Select Parent(ID No. - SurName)-</option> 
                   @foreach($parents as $parent)
                            <option value="{{ $parent->phoneNo }}">{{ $parent->idNo }} - {{ $parent->surName }} </option>    
                              @endforeach

@@ -32,7 +32,7 @@
                         <div class="alert alert-danger" role="alert">
                            <strong>Error! </strong>There were some errors with inputs. 
                          <ul>
-                        @foreach($errors as $error)
+                        @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul> 
@@ -59,7 +59,12 @@
             <strong>Marks </strong>
                 <input type="text" name="marks" value="{{ $exams->marks}}" class="form-control" placeholder="Marks">
             </div>
-            
+            <div class="col-md-6">
+            <strong>Academic Year</strong>
+            <select name="examId" class="form-control" style="width: 100%;" style="border-radius:0px;">
+                <option value="1">2018/2019</option> 
+             </select>
+            </div>
             </div>
             <div class="pull-left">
             <p>&nbsp; </p>

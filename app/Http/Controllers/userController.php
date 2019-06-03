@@ -49,7 +49,7 @@ class userController extends Controller
         request()->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email', 
-            'password' => 'required|min:8'
+            'password' => 'required|min:8|confirmed'
         ]);
             User::create($request->all());
             return redirect()->route('user.index')
@@ -92,10 +92,10 @@ class userController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([
+        request()->validate([
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|unique:users,email', 
+            'password' => 'required|min:8|confirmed'
         ]);
             $user = User::find($id);
             $user->name = $request->get('name');

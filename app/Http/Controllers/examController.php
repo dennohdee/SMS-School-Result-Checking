@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\examresult;
-
+use App\student;
+use exam;
 class examController extends Controller
 {
     /**
@@ -28,7 +29,8 @@ class examController extends Controller
     public function create()
     {
         //
-        return view('exam.create');
+         $students = student::all();
+        return view('exam.create', compact('students'));
     }
 
     /**
@@ -45,7 +47,7 @@ class examController extends Controller
             'courseCode' => 'required',
             'courseTitle' => 'required',
             'marks' => 'required',
-            'acYear' => 'required'
+            'examId' => 'required'
         ]);
         examresult::create($request->all());
             return redirect()->route('exam.index')
@@ -88,6 +90,23 @@ class examController extends Controller
     public function update(Request $request, $id)
     {
         //
+        request()->validate([
+            'regNo' => 'required',
+            'courseCode' => 'required',
+            'courseTitle' => 'required',
+            'marks' => 'required',
+            'examId' => 'required'
+        ]);
+        $exam = examresult::find($id);
+        $exam->regNo = $request->get('regNo');
+        $exam->courseCode = $request->get('courseCode');
+        $exam->courseTitle = $request->get('courseTitle');
+        $exam->marks = $request->get('marks');
+        $exam->examId = $request->get('examId');
+            $exam->save();
+            return redirect()->route('exam.index')
+        ->with("success","Exam Results Updated Successfully!");
+
     }
 
     /**

@@ -46,7 +46,12 @@
         <div class="row">
         <div class="col-md-6">
             <strong>Reg No.</strong>
-                <input type="text" name="regNo" class="form-control" placeholder="Reg No.">
+            <select name="regNo" class="form-control select2" style="width: 100%;" style="border-radius:0px;">
+                  <option selected="selected">-Select Student(RegNo.)-</option> 
+                  @foreach($students as $student)
+                           <option value="{{ $student->regNo }}">{{ $student->regNo }} </option>    
+                             @endforeach
+             </select>
             </div>
             
             <div class="col-md-6">
@@ -62,8 +67,10 @@
                 <input name="marks" type="text" class="form-control" placeholder="Marks">
             </div>
             <div class="col-md-6">
-            <strong>Academic Year </strong>
-                <input name="acYear" type="text" class="form-control" placeholder="Academic Year">
+            <strong>Academic Year</strong>
+            <select name="examId" class="form-control" style="width: 100%;" style="border-radius:0px;">
+                <option value="1">2018/2019</option> 
+             </select>
             </div>
             </div>
             <div class="pull-left">
