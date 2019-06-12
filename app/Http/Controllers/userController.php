@@ -49,7 +49,7 @@ class userController extends Controller
         request()->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email', 
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|min:8'
         ]);
             User::create($request->all());
             return redirect()->route('user.index')
@@ -65,7 +65,7 @@ class userController extends Controller
     public function show($id)
     {
         //
-         $user = User::find($id);
+        $user = User::find($id);
         return view('user.details', compact('user'));
     }
 
@@ -94,8 +94,8 @@ class userController extends Controller
         //
         request()->validate([
             'name' => 'required',
-            'email' => 'required|unique:users,email', 
-            'password' => 'required|min:8|confirmed'
+            'email' => 'required', 
+            'password' => 'required|min:8'
         ]);
             $user = User::find($id);
             $user->name = $request->get('name');

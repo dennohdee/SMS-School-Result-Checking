@@ -79,7 +79,7 @@ class studentController extends Controller
          $parents->phoneNo = $request->get('phoneNo1');
          $parents->email = $request->get('email1');
             $parents->save();
-            return redirect()->rout()->with("success","Parent Added Successfully!");
+            return redirect()->route('student.index')->with("success","Parent Added Successfully!");
          }
        
     }
