@@ -20,9 +20,15 @@ class studentController extends Controller
     public function index()
     {
         //fetch stud
-        $students = student::latest()->paginate(5);
+        $students = student::all();//latest()->paginate(5);
         return view('student.index', compact('students'))
-                ->with('i',(request()->input('page',1)-1)*5);
+                ->with('i');//,(request()->input('page',1)-1)*5);
+    }
+    public function print()
+    {
+        //fetch stud
+        $students = student::all();
+        return view('student.print', compact('students'));
     }
 
     /**
@@ -56,7 +62,7 @@ class studentController extends Controller
             'email' => 'required|unique:students,email',
             'surName' => 'required',
             'otherName' => 'required',
-            'parentPhone' => 'required',
+            'parentPhone' => 'required|max:14',
             'yos' => 'required'
         ]); 
             student::create($request->all());

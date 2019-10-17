@@ -22,6 +22,7 @@ Route::resource('student', 'studentController');
 Route::resource('user', 'userController');
 Route::resource('sms', 'smsController');
 Route::resource('exam', 'examController');
+Route::get('/student/print', 'printController@print')->name('print');
 Route::get('/help', 'smsreportsController@help')->name('help');
 Route::get('/profile', 'profileController@profile')->name('profile');
 Route::put('/profile', 'profileController@update');

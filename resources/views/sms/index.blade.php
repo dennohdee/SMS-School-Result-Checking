@@ -26,27 +26,25 @@
               <i class="fa fa-minus"></i></button>
           </div>
         </div>
+        <div class="box-body">
+            
+            <div class="box box-default">
+          <div class="box-header with-border">
+            <h3 class="box-title"></h3>
+            <a class="btn btn-sm btn-info pull-right" href="{{ route('sms.create')}}"><i class="fa fa-plus"></i> Add request</a>
+          </div>
+          <div class="box-body">
         <div class="box-body table-responsive no-padding">
-               <div class="row">
-               <div class="col-sm-10"></div>
-               <div class="col-sm-2">
-                 <a class="btn btn-sm btn-info" href="{{ route('sms.create')}}"><i class="fa fa-plus"></i> Add request</a>
-              </div>
-              </div>
-              @if ($message = Session::get('success'))
-                <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <p>{{$message}}</p>
-                </div>
-              @endif
+              
               <!--tbl -->
-                <table class="table table-hover table-sm">
-                <tr>
+                <table  id="example1" class="table table-bordered table-striped">
+                <thead><tr>
                  <th>No.</th>
                  <th>Sender</th>
                  <th>shortCode</th>
                  <th>Created at</th>
-                </tr>
+                </tr></thead>
+                <tbody>
                 @foreach($requests as $request)
                 <tr>
                  <td>{{ ++$i}}.</td>
@@ -59,19 +57,28 @@
                     <a class="btn btn-sm btn-warning" href="{{ route('sms.edit', $request->id)}}">Edit</a>
                     
                  </td>
-                </tr>
+                </tr></tbody>
                 @endforeach
+                <tfoot><tr>
+                 <th>No.</th>
+                 <th>Sender</th>
+                 <th>shortCode</th>
+                 <th>Created at</th>
+                </tr></tfoot>
                 </table>
-                 {!! $requests->links() !!}
+                
+               
               <!--/tbl-->
         </div>
+        </div>
         <!-- /.box-body -->
-        <div class="box-footer">
-          &nbsp;
+        </div>
         </div>
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
+      
       </section>
     <!-- /.content -->
+    
 @endsection

@@ -21,9 +21,9 @@ class smsController extends Controller
     public function index()
     {
         //fetch stud
-        $requests = requests::latest()->paginate(5);
+        $requests = requests::all(); //latest()->paginate(5);
         return view('sms.index', compact('requests'))
-                ->with('i',(request()->input('page',1)-1)*5);
+                ->with('i');//,(request()->input('page',1)-1)*5);
     }
 
     /**

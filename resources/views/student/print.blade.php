@@ -1,6 +1,5 @@
-@extends('layouts.admin')
-
-@section('content')
+<html>
+<body>
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -15,7 +14,7 @@
 
     <!--- Main content -->
     <section class="content">
- <!-- Default box -->
+      <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">List of Students</h3>
@@ -26,15 +25,7 @@
               <i class="fa fa-minus"></i></button>
           </div>
         </div>
-        <div class="box-body">
-            
-            <div class="box box-default">
-          <div class="box-header with-border">
-            <h3 class="box-title"></h3>
-            <a class="btn btn-sm btn-info pull-right" href="{{ route('student.create')}}"><i class="fa fa-plus"></i> Add Student</a>
-            </div>
-          <div class="box-body">
-               
+        <div class="box-body table-responsive no-padding">
               @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -42,8 +33,7 @@
                 </div>
               @endif
               <!--tbl -->
-                <table id="example1" class="table table-bordered table-striped">
-                <tfoot>
+                <table class="table table-hover table-sm">
                 <tr>
                  <th>No.</th>
                  <th>Reg No</th>
@@ -53,10 +43,8 @@
                  <th>Phone No.</th>
                  <th>Parent Phone</th>
                  <th>Year of Study</th>
-                 <th>Actions</th>
+                
                 </tr>
-                </tfoot>
-                <tbody>
                 @foreach($students as $student)
                 <tr>
                  <td>{{ ++$i}}.</td>
@@ -67,42 +55,22 @@
                  <td>{{ $student->phoneNo}}</td>
                  <td>{{ $student->parentPhone}}</td>
                  <td>{{ $student->yos}}</td>
-                 <td>
-                    <form action="{{ route('student.destroy', $student->id)}}" method="post">
-                    <a class="btn btn-sm btn-success" href="{{ route('student.show', $student->id)}}">View</a>
-                    <a class="btn btn-sm btn-warning" href="{{ route('student.edit', $student->id)}}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-sm btn-danger" onclick="return confirm('Delete Student?')" type="submit">Delete</button>
-                    </form>
-                 </td>
+                 
                 </tr>
-                </tbody>
                 @endforeach
-                <thead>
-                <tr>
-                 <th>No.</th>
-                 <th>Reg No</th>
-                 <th>Sur Name</th>
-                 <th>Other Name</th>
-                 <th>ID No.</th>
-                 <th>Phone No.</th>
-                 <th>Parent Phone</th>
-                 <th>Year of Study</th>
-                 <th>Actions</th>
-                </tr>
-                </thead>
                 </table>
                
               <!--/tbl-->
 
         </div>
         <!-- /.box-body -->
-      </div>
-      </div>
+        <div class="box-footer">
+          &nbsp;
+        </div>
+        <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-      
       </section>
     <!-- /.content -->
-@endsection
+</body>
+</html>
