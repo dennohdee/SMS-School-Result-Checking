@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\requests;
 use App\parents;
 use App\responses;
+use App\student;
+use App\examresult;
+// require SDK here
+use AfricasTalking\SDK\AfricasTalking;
+use Log;
 
 class smsController extends Controller
 {
@@ -14,10 +19,10 @@ class smsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     public function index()
     {
         //fetch stud
@@ -136,5 +141,106 @@ class smsController extends Controller
          $requests->delete();
             return redirect()->route('sms.index')
         ->with("success","SMS Deleted Successfully!");
+    }
+    //incoming sms
+    public function messageIn(Request $request)
+    {
+        try {
+            $text = $request->text;
+            $from = $request->from;
+            $to = $request->to;
+            $id = $request->id;
+            $start='';
+            $end='';
+            Log::info($request);
+            //insert into request
+            $incoming = new requests();
+            $incoming->sender = $from;
+            $incoming->shortCode = $text;
+            $incoming->save();
+            if(strtolower($text) == 'results' || strtolower($text) == 'result') {
+                //get student
+                $student = student::where('phoneNo','LIKE','%'.$from)->orWhere('parentPhone','LIKE','%'.$from)->first();
+                //get results
+                if($student) {
+                    $start = "MKU results for student ".$student->surName;
+                    $end = " \nType HELP or call/SMS 0723411264.";
+                    $content='';
+                    $res = examresult::where('regNo', $student->regNo)->get();
+                    if(count($res) > 0) {
+                        $result_arr=[];
+                        //result
+                        foreach($res as $result){
+                            array_push($result_arr,$result->courseCode." - ".$result->marks);
+                        }
+                        $content = " ".str_replace(['"','[',']'],'',json_encode($result_arr));
+                    }
+                    else {
+                        //no result
+                        $content = " Sorry! No result for student ".$student->surName. " or Registration ".$student->regNo;
+                    }
+                }
+                else {
+                    //no studend
+                    $content = "Sorry! No student/parent with that phone number.";
+                }
+                $message = $start.$content.$end;
+            }
+            //check is help
+            else if(strtolower($text) == 'help') {
+                $message="Type RESULTS, to view current results.
+Type REASON to know why you have no results.";
+            }
+            else if(strtolower($text) == 'reason') {
+                $message="Reasons for unavailability of exams can be fee balances or pending specials.";
+            }
+            else {
+                $message="INVALID QUERY.
+                Type RESULTS, to view current results.
+Type REASON to know why you have no results.";
+            }
+            
+            Log::info($message);
+            $this->sendSMS($from,$message);
+            return 'sucess';
+        } catch (\Throwable $th) {
+            Log::error($th);
+            return 'error';
+        }
+    }
+    //send sms
+    public function sendSMS($phone,$message)
+    {
+        $username= 'sandbox';
+        $apiKey= '663ac7a85e953a5f18b380a9f45dd8e6b394cfaba6a1d82163760ad060a4eb32';
+        // Initialize the SDK
+        $AT       = new AfricasTalking($username, $apiKey);
+        //Get the airtime service
+        $sms  = $AT->sms();
+        $from = '2182';
+        $results = $sms->send([
+            "from" => $from,
+            "to"  => $phone,
+            "message"       => $message,
+        ]);
+        Log::info($results);
+        //if no error message
+        if($results['data']->SMSMessageData->Recipients[0]->messageId != 'None')
+        {
+            //update requestId
+            if($results['data']->SMSMessageData->Recipients[0]->status == "Success" || $results['data']->SMSMessageData->Recipients[0]->status == "Sent")
+            {
+                //success
+            }
+            else
+            {
+                //fail
+            }
+        }
+        else
+        {
+            //fail
+            $failed_reason =$results['data']->SMSMessageData->Recipients[0]->status;
+        }
     }
 }

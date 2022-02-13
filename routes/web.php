@@ -27,3 +27,4 @@ Route::get('/help', 'smsreportsController@help')->name('help');
 Route::get('/profile', 'profileController@profile')->name('profile');
 Route::put('/profile', 'profileController@update');
 
+Route::any('/incoming-sms','smsController@messageIn');
