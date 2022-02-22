@@ -157,8 +157,10 @@
         <li class="divider"></li>
         <li><a href="{{ route('sms.index')}}"><i class="fa fa-fw fa-file-text"></i> <span>Add Units</span></a></li>
         <li class="divider"></li>
-        <li><a href="{{ route('sms.index')}}"><i class="fa fa-fw fa-money"></i> <span>Fee Reports</span></a></li>
+        <li><a href="{{ route('reports.exams')}}"><i class="fa fa-fw fa-file-text"></i> <span>Exam Report</span></a></li>
         <li class="divider"></li>
+        <!-- <li><a href="{{ route('sms.index')}}"><i class="fa fa-fw fa-money"></i> <span>Fee Reports</span></a></li>
+        <li class="divider"></li> -->
         <li><a href="{{ route('help')}}"><i class="fa fa-question-circle"></i> <span>Help</span></a></li>
       </ul>
     </section>

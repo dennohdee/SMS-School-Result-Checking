@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\student;
+use App\parents;
+use App\requests;
+use App\exams;
+use App\Units;
+use Log;
+use Auth;
 
 class smsreportsController extends Controller
 {
@@ -80,8 +87,10 @@ class smsreportsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function xtreme()
     {
-        //
+        $results = student::with(['studentExam'])->get();
+        return view('reports.exams', compact('results'));
     }
+    
 }
