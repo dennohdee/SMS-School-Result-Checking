@@ -48,7 +48,7 @@
                 <tbody>
                 @foreach($results as $result)
                 <tr>
-                 <td>{{ $result->id}}.</td>
+                 <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#report-{{ $result->id}}">{{ $result->id}}.</button></td>
                  <td>{{ $result->regNo}}</td>
                  <td>{{ $result->surName}}</td>
                  <td>@if(count($result->studentExam) > 0)
@@ -60,6 +60,43 @@
                      @endif
                 </td>
                 <td>2021</td>
+                
+                <!-- modal -->
+                <div class="modal fade" id="report-{{ $result->id}}" aria-modal="true" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body"  id="{{$result->id}}">
+                              <h4 class="modal-title">MKU - Thika</h4>
+                              <h4 class="modal-title">Results for {{ $result->surName}} of {{ $result->regNo}}</h4>
+                            @if(count($result->studentExam) > 0)
+                            @php $total = 0;@endphp
+                                @foreach($result->studentExam as $exam)
+                                <ul>    
+                                    <li>{{$exam->courseCode}} : {{$exam->courseTitle}} - {{$exam->marks}}%</li>
+                                </ul>
+                                @php 
+                                  $total += $exam->marks;
+                                  if($total > 40) {
+                                    $grade = 'Pass';
+                                  } else {
+                                    $grade = 'Fail';
+                                  }
+                                @endphp
+                                @endforeach
+                                <p><b>Total: </b> {{ $total }} </p>
+                                <p><b>Mean: </b> {{ $total/count($result->studentExam) }} - {{$grade}} </p>
+                            @else
+                              <p>No results for the year</p>
+                            @endif
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+                                <button type="button" onClick="return printRes({{ $result->id}})"  class="btn btn-info" data-dismiss="modal">Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./modal -->
                 </tr></tbody>
                 @endforeach
                 <tfoot>
@@ -91,6 +128,16 @@
 <script>
     function printR() {
         var prtContent = document.getElementById("myDiv");
+        var WinPrint = window.open();
+        WinPrint.document.write(prtContent.innerHTML);
+        WinPrint.document.write( "<link rel='stylesheet' href='style.css' type='text/css' media='print'/>" );
+        WinPrint.document.close();
+        WinPrint.focus();
+        WinPrint.print();
+        WinPrint.close();
+    }
+    function printRes(id) {
+        var prtContent = document.getElementById(id);
         var WinPrint = window.open();
         WinPrint.document.write(prtContent.innerHTML);
         WinPrint.document.write( "<link rel='stylesheet' href='style.css' type='text/css' media='print'/>" );
