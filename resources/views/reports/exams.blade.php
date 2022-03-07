@@ -44,22 +44,43 @@
                  <th>Surname</th>
                  <th>Scores</th>
                  <th>Year</th>
+                 <th></th>
                 </tr></thead>
                 <tbody>
+                @php $passes = 0;@endphp
+                @php $fails = 0;@endphp
+                @php $na = 0;@endphp
+                
                 @foreach($results as $result)
                 <tr>
                  <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#report-{{ $result->id}}">{{ $result->id}}.</button></td>
                  <td>{{ $result->regNo}}</td>
                  <td>{{ $result->surName}}</td>
+                 @php $tots=0;@endphp
                  <td>@if(count($result->studentExam) > 0)
                         @foreach($result->studentExam as $exam)
+                        @php $tots+=$exam->marks;@endphp
                         <ul>    
                             <li>{{$exam->courseCode}}: {{$exam->marks}}%</li>
                         </ul>
                         @endforeach
                      @endif
+                    </td>
+                  <td>2021</td>
+                <td>
+                  @if(count($result->studentExam) > 0)
+                    @if($tots/count($result->studentExam) >= 40)
+                    @php $passes += 1;@endphp
+                    <span class="text-success">Pass</span>
+                    @else
+                    @php $fails += 1;@endphp
+                    <span class="text-danger">Fail</span>
+                    @endif
+                  @else
+                    @php $na += 1;@endphp
+                    <span class="text-warning">N/A</span>
+                  @endif
                 </td>
-                <td>2021</td>
                 
                 <!-- modal -->
                 <div class="modal fade" id="report-{{ $result->id}}" aria-modal="true" role="dialog">
@@ -99,6 +120,9 @@
                 <!-- ./modal -->
                 </tr></tbody>
                 @endforeach
+                <h4><b>Passes:</b> {{ $passes }}</h4>
+                <h4><b>Fails:</b> {{ $fails }}</h4>
+                <h4><b>N/A:</b> {{ $na }}</h4>
                 <tfoot>
                     <tr>
                     <th>#.</th>
