@@ -92,5 +92,13 @@ class smsreportsController extends Controller
         $results = student::with(['studentExam'])->get();
         return view('reports.exams', compact('results'));
     }
+    public function unitResults(Request $request)
+    {
+        $id = $request->get('id');
+        $results = student::whereHas('studentExam', function($query) use ($id){
+            $query->where('courseCode', 'LIKE', '%'.$id.'%');
+        })->get();
+        return view('reports.unit-results', compact('results','id'));
+    }
     
 }

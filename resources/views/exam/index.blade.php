@@ -54,7 +54,7 @@
                 <tr>
                  <td>{{ ++$i}}.</td>
                  <td>{{ $exam->regNo}}</td>
-                 <td>{{ $exam->courseCode}}</td>
+                 <td><a href="{{route('reports.exams.unit')}}?id={{$exam->courseCode}}">{{ $exam->courseCode}}</a></td>
                  <td>{{ $exam->courseTitle}}</td>
                  <td>{{ $exam->marks}}</td>
                  <td>{{ $exam->acYear}}</td>
